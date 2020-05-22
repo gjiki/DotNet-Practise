@@ -1,35 +1,33 @@
 ﻿@model WebApp.Models.Currency
 
-<form asp-controller="Currency" asp-acion="Edit" method="post" class="mt-3">
-    <div class="form-group row">
-        <label asp-for="FromCurrency" class="col-sm-2 col-form-label"></label>
-        <div class="col-sm-10">
-            <input asp-for="FromCurrency" class="form-control" placeholder="Name">
-            <span asp-validation-for="FromCurrency"></span>
-        </div>
+<div class="form-group row">
+    <label asp-for="FromCurrency" class="col-sm-2 col-form-label"></label>
+    <div class="col-sm-10">
+        <input asp-for="FromCurrency" class="form-control" placeholder="From Currency">
+        <span asp-validation-for="FromCurrency"></span>
     </div>
+</div>
 
-    <div class="form-group row">
-        <label asp-for="ToCurrency" class="col-sm-2 col-form-label"></label>
-        <div class="col-sm-10">
-            <input asp-for="ToCurrency" class="form-control" placeholder="Name">
-            <span asp-validation-for="ToCurrency"></span>
-        </div>
+<div class="form-group row">
+    <label asp-for="ToCurrency" class="col-sm-2 col-form-label"></label>
+    <div class="col-sm-10">
+        <input asp-for="ToCurrency" class="form-control" placeholder="To Currency">
+        <span asp-validation-for="ToCurrency"></span>
     </div>
+</div>
 
-    <div class="form-group row">
-        <label asp-for="Rate" class="col-sm-2 col-form-label"></label>
-        <div class="col-sm-10">
-            <input asp-for="Rate" class="form-control" placeholder="Name">
-            <span asp-validation-for="Rate"></span>
-        </div>
+<div class="form-group row">
+    <label asp-for="Rate" class="col-sm-2 col-form-label"></label>
+    <div class="col-sm-10">
+        <input asp-for="Rate" class="form-control" placeholder="Rate">
+        <span asp-validation-for="Rate"></span>
     </div>
+</div>
 
-    @Html.HiddenFor(m => m.Date)
+@Html.HiddenFor(m => m.Date)
 
-    <div class="form-group row">
-        <div class="col-sm-10">
-            <button type="submit" class="btn btn-primary">Save</button>
-        </div>
+<div class="form-group row">
+    <div class="col-sm-10">
+        <button type="submit" class="btn btn-primary">Save</button>
     </div>
-</form>
+</div>

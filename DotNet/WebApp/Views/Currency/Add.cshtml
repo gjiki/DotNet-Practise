@@ -5,6 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@{
-    Html.RenderPartial("CurrencyData");
-}
+    <form asp-controller="Currency" asp-acion="Add" method="post" class="mt-3">
+        @{
+            Html.RenderPartial("CurrencyData");
+        }
+
+    </form>
