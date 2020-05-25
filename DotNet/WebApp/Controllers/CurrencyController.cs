@@ -39,7 +39,6 @@ namespace WebApp.Controllers
                 _currencyRepository.Add(currency);
                 return RedirectToAction("Index", "Currency");
             }
-
             return View();
         }
 
@@ -59,7 +58,6 @@ namespace WebApp.Controllers
                 _currencyRepository.Update(currency);
                 return RedirectToAction("Index", "Currency");
             }
-
             return View();
         }
 

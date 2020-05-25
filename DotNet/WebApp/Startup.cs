@@ -26,8 +26,9 @@ namespace WebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContextPool<AppDbContext>(
-                options => options.UseSqlServer(Configuration.GetConnectionString("CurrencyDbConnection")));
+                options => options.UseSqlServer(Configuration.GetConnectionString("AppDbConnection")));
             services.AddScoped<ICurrencyRepository, SqlCurrencyRepository>();
+            services.AddScoped<IOperationRepository, SqlOperationRepository>();
             services.AddControllersWithViews();
         }
 

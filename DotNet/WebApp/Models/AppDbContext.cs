@@ -14,5 +14,6 @@ namespace WebApp.Models
         }
 
         public DbSet <Currency> Currensies { get; set; }
+        public DbSet <Operation> Operations { get; set; }
     }
 }

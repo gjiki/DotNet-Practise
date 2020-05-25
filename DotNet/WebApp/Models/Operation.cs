@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApp.Models;
 
 namespace WebApp.Models
 {
-    public class Currency
+    public class Operation
     {
         [Key]
         public int ID { get; set; }
@@ -28,7 +30,11 @@ namespace WebApp.Models
         public decimal Rate { get; set; }
 
         [Required]
-        [DataType(DataType.Date)]
-        public DateTime Date { get; set; }
+        [DataType(DataType.Currency)]
+        public decimal BuyAmount { get; set; }
+
+        [Required]
+        [DataType(DataType.Currency)]
+        public decimal SellAmount { get; set; }
     }
 }

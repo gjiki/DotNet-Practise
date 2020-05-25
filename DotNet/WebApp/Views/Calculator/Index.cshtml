@@ -1,0 +1,30 @@
+﻿@model IEnumerable<WebApp.Models.Operation>
+
+@{
+    ViewData["Title"] = "Operations";
+}
+
+<table class="table table-bordered table-responsive table-hover">
+    <tr>
+        <th>Id</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Rate</th>
+        <th>BuyAmount</th>
+        <th>SellAmount</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>@item.ID</td>
+        <td>@item.FromCurrency</td>
+        <td>@item.ToCurrency</td>
+        <td>@item.Rate</td>
+        <td>@item.BuyAmount</td>
+        <td>@item.SellAmount</td>
+    </tr>
+    }
+</table>
+
+<hr />
+<a class="nav-link text-dark" asp-area="" asp-controller="Calculator" asp-action="Add">Add Operation</a>

@@ -2,7 +2,6 @@
 
 @{
     ViewData["Title"] = "Currencies";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <table class="table table-bordered table-responsive table-hover">
@@ -17,14 +16,14 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>@item.Id</td>
+            <td>@item.ID</td>
             <td>@item.FromCurrency</td>
             <td>@item.ToCurrency</td>
             <td>@item.Rate</td>
             <td>@item.Date</td>
             <td>
-                @Html.ActionLink("Edit", "Edit", "Currency", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", "Currency", new { id = item.Id })
+                @Html.ActionLink("Edit", "Edit", "Currency", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", "Currency", new { id = item.ID })
             </td>
         </tr>
     }

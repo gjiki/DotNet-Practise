@@ -7,47 +7,72 @@ namespace WebApp.Models
 {
     public class SqlCurrencyRepository : ICurrencyRepository
     {
-        private readonly AppDbContext context;
+        private readonly AppDbContext _context;
 
         public SqlCurrencyRepository(AppDbContext context)
         {
-            this.context = context;
+            this._context = context;
         }
 
         public Currency Add(Currency currency)
         {
-            context.Currensies.Add(currency);
-            context.SaveChanges();
+            Currency curr = _context.Currensies.FirstOrDefault(m => m.FromCurrency == currency.FromCurrency && m.ToCurrency == currency.ToCurrency);
+            if (curr == null)
+            {
+                _context.Currensies.Add(currency);
+                _context.SaveChanges();
+            } else
+            {
+                this.Update(currency);
+            }
             return currency;
         }
 
         public Currency Delete(int id)
         {
-            Currency curr = context.Currensies.FirstOrDefault(m => m.Id == id);
+            Currency curr = _context.Currensies.FirstOrDefault(m => m.ID == id);
             if (curr != null)
             {
-                context.Currensies.Remove(curr);
-                context.SaveChanges();
+                _context.Currensies.Remove(curr);
+                _context.SaveChanges();
             }
             return curr;
         }
 
         public IEnumerable<Currency> GetAllCurrencies()
         {
-            return context.Currensies;
+            return _context.Currensies;
         }
 
         public Currency GetCurrency(int id)
         {
-            return context.Currensies.Find(id);
+            return _context.Currensies.FirstOrDefault(m => m.ID == id);
+        }
+
+        public decimal GetRateByCurrencies(string fromCurrency, string toCurrency)
+        {
+            Currency curr = _context.Currensies.FirstOrDefault(x => x.FromCurrency == fromCurrency && x.ToCurrency == toCurrency);
+            if (curr != null) return curr.Rate;
+            return (decimal)0.0;
         }
 
         public Currency Update(Currency currency)
         {
-            var curr = context.Currensies.Attach(currency);
+            var curr = _context.Currensies.Attach(currency);
             curr.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-            context.SaveChanges();
+            _context.SaveChanges();
             return currency;
+        }
+
+        public List<string> GetUniqueCurrencies()
+        {
+            HashSet<string> st = new HashSet<string>();
+            foreach (var item in _context.Currensies)
+            {
+                st.Add(item.FromCurrency);
+                st.Add(item.ToCurrency);
+            }
+            return st.ToList();
         }
     }
 }

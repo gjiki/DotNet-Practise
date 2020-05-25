@@ -142,3 +142,5 @@ C:\Users\jikia\source\repos\DotNet\WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Cu
 C:\Users\jikia\source\repos\DotNet\WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Currency\Index.cshtml.g.cs
 C:\Users\jikia\source\repos\DotNet\WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Currency\Edit.cshtml.g.cs
 C:\Users\jikia\source\repos\DotNet\WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Currency\CurrencyData.cshtml.g.cs
+C:\Users\jikia\source\repos\DotNet\WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Calculator\Index.cshtml.g.cs
+C:\Users\jikia\source\repos\DotNet\WebApp\obj\Debug\netcoreapp3.1\Razor\Views\Calculator\Add.cshtml.g.cs
