@@ -35,7 +35,6 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                currency.Date = DateTime.Now;
                 _currencyRepository.Add(currency);
                 return RedirectToAction("Index", "Currency");
             }
@@ -54,7 +53,6 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                currency.Date = DateTime.Now;
                 _currencyRepository.Update(currency);
                 return RedirectToAction("Index", "Currency");
             }

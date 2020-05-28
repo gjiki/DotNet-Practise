@@ -7,9 +7,9 @@
 <table class="table table-bordered table-responsive table-hover">
     <tr>
         <th>Id</th>
-        <th>From</th>
-        <th>To</th>
-        <th>Rate</th>
+        <th>Name</th>
+        <th>Buy</th>
+        <th>Sell</th>
         <th>Date</th>
         <th>Actions</th>
     </tr>
@@ -17,9 +17,9 @@
     {
         <tr>
             <td>@item.ID</td>
-            <td>@item.FromCurrency</td>
-            <td>@item.ToCurrency</td>
-            <td>@item.Rate</td>
+            <td>@item.CurrencyName</td>
+            <td>@item.Buy</td>
+            <td>@item.Sell</td>
             <td>@item.Date</td>
             <td>
                 @Html.ActionLink("Edit", "Edit", "Currency", new { id = item.ID }) |

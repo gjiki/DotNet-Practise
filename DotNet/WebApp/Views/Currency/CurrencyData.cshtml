@@ -1,26 +1,26 @@
 ﻿@model WebApp.Models.Currency
 
 <div class="form-group row">
-    <label asp-for="FromCurrency" class="col-sm-2 col-form-label"></label>
+    <label asp-for="CurrencyName" class="col-sm-2 col-form-label"></label>
     <div class="col-sm-10">
-        <input asp-for="FromCurrency" class="form-control" placeholder="From Currency">
-        <span asp-validation-for="FromCurrency"></span>
+        <input asp-for="CurrencyName" class="form-control" placeholder="CurrencyName">
+        <span asp-validation-for="CurrencyName"></span>
     </div>
 </div>
 
 <div class="form-group row">
-    <label asp-for="ToCurrency" class="col-sm-2 col-form-label"></label>
+    <label asp-for="Buy" class="col-sm-2 col-form-label"></label>
     <div class="col-sm-10">
-        <input asp-for="ToCurrency" class="form-control" placeholder="To Currency">
-        <span asp-validation-for="ToCurrency"></span>
+        <input asp-for="Buy" class="form-control" placeholder="Buy">
+        <span asp-validation-for="Buy"></span>
     </div>
 </div>
 
 <div class="form-group row">
-    <label asp-for="Rate" class="col-sm-2 col-form-label"></label>
+    <label asp-for="Sell" class="col-sm-2 col-form-label"></label>
     <div class="col-sm-10">
-        <input asp-for="Rate" class="form-control" placeholder="Rate">
-        <span asp-validation-for="Rate"></span>
+        <input asp-for="Sell" class="form-control" placeholder="Sell">
+        <span asp-validation-for="Sell"></span>
     </div>
 </div>
 

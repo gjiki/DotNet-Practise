@@ -28,8 +28,15 @@ namespace WebApp.Controllers
         [HttpGet]
         public IActionResult Add()
         {
+            List<string> lst = new List<string>();
+            lst.Add(null);
+            foreach (var item in _currencyRepository.GetUniqueCurrencies())
+            {
+                lst.Add(item);
+            }
+            ViewBag.UniqueCurrencies = new SelectList(lst);
+
             Operation operation = new Operation();
-            ViewBag.UniqueCurrencies = new SelectList(_currencyRepository.GetUniqueCurrencies());
             return View(operation);
         }
 
@@ -42,6 +49,13 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index", "Calculator");
             }
             return View();
+        }
+
+        [HttpPost]
+        public JsonResult Rate(Operation data)
+        {
+            var result = new Random().Next(2, 4);
+            return Json(result);
         }
     }
 }

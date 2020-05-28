@@ -16,13 +16,15 @@ namespace WebApp.Models
 
         public Currency Add(Currency currency)
         {
-            Currency curr = _context.Currensies.FirstOrDefault(m => m.FromCurrency == currency.FromCurrency && m.ToCurrency == currency.ToCurrency);
+            Currency curr = _context.Currensies.FirstOrDefault(m => m.CurrencyName == currency.CurrencyName);
+            currency.Date = DateTime.Now;
             if (curr == null)
             {
                 _context.Currensies.Add(currency);
                 _context.SaveChanges();
             } else
             {
+                currency.Date = DateTime.Now;
                 this.Update(currency);
             }
             return currency;
@@ -49,15 +51,23 @@ namespace WebApp.Models
             return _context.Currensies.FirstOrDefault(m => m.ID == id);
         }
 
-        public decimal GetRateByCurrencies(string fromCurrency, string toCurrency)
+        public decimal GetBuyRateByCurrencies(string currName)
         {
-            Currency curr = _context.Currensies.FirstOrDefault(x => x.FromCurrency == fromCurrency && x.ToCurrency == toCurrency);
-            if (curr != null) return curr.Rate;
+            Currency curr = _context.Currensies.FirstOrDefault(x => x.CurrencyName == currName);
+            if (curr != null) return curr.Buy;
+            return (decimal)0.0;
+        }
+
+        public decimal GetSellRateByCurrencies(string currName)
+        {
+            Currency curr = _context.Currensies.FirstOrDefault(x => x.CurrencyName == currName);
+            if (curr != null) return curr.Sell;
             return (decimal)0.0;
         }
 
         public Currency Update(Currency currency)
         {
+            currency.Date = DateTime.Now;
             var curr = _context.Currensies.Attach(currency);
             curr.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             _context.SaveChanges();
@@ -69,8 +79,7 @@ namespace WebApp.Models
             HashSet<string> st = new HashSet<string>();
             foreach (var item in _context.Currensies)
             {
-                st.Add(item.FromCurrency);
-                st.Add(item.ToCurrency);
+                st.Add(item.CurrencyName);
             }
             return st.ToList();
         }

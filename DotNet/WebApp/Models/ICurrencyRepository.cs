@@ -12,7 +12,8 @@ namespace WebApp.Models
         Currency Add(Currency currency);
         Currency Update(Currency currency);
         Currency Delete(int id);
-        decimal GetRateByCurrencies(string fromCurrency, string toCurrency);
-        public List<string> GetUniqueCurrencies();
+        decimal GetBuyRateByCurrencies(string currName);
+        decimal GetSellRateByCurrencies(string currName);
+        List<string> GetUniqueCurrencies();
     }
 }
