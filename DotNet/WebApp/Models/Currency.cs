@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace WebApp.Models
 {
@@ -14,19 +11,20 @@ namespace WebApp.Models
         [MaxLength(3)]
         [Required]
         [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Use letters only")]
+        public string CurrencyCode { get; set; }
+
+        [Required]
+        [DataType(DataType.Text)]
         public string CurrencyName { get; set; }
 
         [Required]
-        [Range(0, 100)]
-        [DataType(DataType.Currency)]
-        [RegularExpression(@"^[1-9]\d*(\.\d+)?$", ErrorMessage = "Decimal only")]
-        public decimal Buy { get; set; }
+        [DataType(DataType.Text)]
+        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Use latin letters only")]
+        public string CurrencyLatinName { get; set; }
 
         [Required]
-        [Range(0, 100)]
-        [DataType(DataType.Currency)]
-        [RegularExpression(@"^[1-9]\d*(\.\d+)?$", ErrorMessage = "Decimal only")]
-        public decimal Sell { get; set; }
+        [RegularExpression(@"^[0-9]+$", ErrorMessage = "Use numbers only")]
+        public int OrderNum { get; set; }
 
         [Required]
         [DataType(DataType.Date)]

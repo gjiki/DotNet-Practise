@@ -1,8 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace WebApp.Models
 {
@@ -13,7 +9,8 @@ namespace WebApp.Models
         {
         }
 
-        public DbSet <Currency> Currensies { get; set; }
+        public DbSet <Course> Courses { get; set; }
+        public DbSet <Currency> Currencies { get; set; }
         public DbSet <Operation> Operations { get; set; }
     }
 }

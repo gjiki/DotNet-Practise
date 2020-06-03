@@ -5,20 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20200521160821_initmigr.cs" />
-    <Compile Remove="Migrations\20200521160821_initmigr.Designer.cs" />
-    <Compile Remove="Migrations\20200521162409_initMigr.cs" />
-    <Compile Remove="Migrations\20200521162409_initMigr.Designer.cs" />
-    <Compile Remove="Migrations\20200521185204_initmigr.cs" />
-    <Compile Remove="Migrations\20200521185204_initmigr.Designer.cs" />
-    <Compile Remove="Migrations\20200524105159_initmigr.cs" />
-    <Compile Remove="Migrations\20200524105159_initmigr.Designer.cs" />
-    <Compile Remove="Migrations\20200524110312_initmigr.cs" />
-    <Compile Remove="Migrations\20200524110312_initmigr.Designer.cs" />
-    <Compile Remove="Migrations\20200524115634_initmigr.cs" />
-    <Compile Remove="Migrations\20200524115634_initmigr.Designer.cs" />
-    <Compile Remove="Migrations\20200525005257_initmife.cs" />
-    <Compile Remove="Migrations\20200525005257_initmife.Designer.cs" />
+    <Compile Remove="Migrations\20200603043731_initmigr.cs" />
+    <Compile Remove="Migrations\20200603043731_initmigr.Designer.cs" />
+    <Compile Remove="Migrations\20200603054108_initmigr.cs" />
+    <Compile Remove="Migrations\20200603054108_initmigr.Designer.cs" />
+    <Compile Remove="Migrations\20200603063137_initmigr.cs" />
+    <Compile Remove="Migrations\20200603063137_initmigr.Designer.cs" />
+    <Compile Remove="Migrations\20200603071045_initmigr.cs" />
+    <Compile Remove="Migrations\20200603071045_initmigr.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,6 +21,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.4">
       <PrivateAssets>all</PrivateAssets>

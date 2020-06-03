@@ -3,22 +3,41 @@
         var from = $("#fromCurrencyElem").val();
         var to = $("#toCurrencyElem").val();
         if (from && to) {
-            var data = {};
-            data.FromCurrency = from;
-            data.ToCurrency = to;
             $.ajax({
                 type: "POST",
                 url: "/Calculator/Rate",
-                data: '{data: ' + JSON.stringify(data) + '}',
-                contentType: "application/json; charset=utf-8",
+                dataType : 'json',
+                data: {
+                    'fromCurrency': from,
+                    'toCurrency' : to
+                },
                 success: function (data) {
-                    $("#rateInput").val(data);
+                    $("#rateInput").val("" + data);
                 },
                 error: function () {
                     alert("error while inserting data!");
                 }
             });
-            alert("Seisburqi?");
+        }
+    });
+
+    $("#buyAmountInput").change(function () {
+        var buy = $("#buyAmountInput").val();
+        if (buy != '0.00' && buy != null && buy != NaN) {
+            var rate = $("#rateInput").val();
+            if (rate != '0.00' && rate != null && rate != NaN) {
+                $("#sellAmountInput").val("" + (buy * rate));
+            }
+        }
+    });
+
+    $("#sellAmountInput").change(function () {
+        var sell = $("#sellAmountInput").val();
+        if (sell != '0.00' && sell != null && sell != NaN) {
+            var rate = $("#rateInput").val();
+            if (rate != '0.00' && rate != null && rate != NaN) {
+                $("#buyAmountInput").val("" + (sell * rate));
+            }
         }
     });
 });

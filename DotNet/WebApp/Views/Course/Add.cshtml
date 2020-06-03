@@ -1,0 +1,39 @@
+﻿@model WebApp.Models.Course
+
+@{
+    ViewData["Title"] = "Add Course";
+}
+
+    <form asp-controller="Course" asp-acion="Add" method="post" class="mt-3">
+        <div class="form-group row">
+            <label asp-for="CurrencyName" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                @Html.DropDownListFor(model => model.CurrencyName, ViewBag.UniqueCurrenciesFromCourse as SelectList, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CurrencyName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="Buy" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="Buy" class="form-control" placeholder="Buy">
+                <span asp-validation-for="Buy"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="Sell" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="Sell" class="form-control" placeholder="Sell">
+                <span asp-validation-for="Sell"></span>
+            </div>
+        </div>
+
+        @Html.HiddenFor(m => m.Date)
+
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </form>

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<WebApp.Models.Operation>
+
+@{
+    ViewData["Title"] = "Suspicios Transactions";
+}
+
+<p>
+    <a class="nav-link text-dark" asp-area="" asp-controller="Report" asp-action="Index">Back to reports</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FromCurrency)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToCurrency)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BuyAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SellAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FromCurrency)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ToCurrency)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BuyAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SellAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

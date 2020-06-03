@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace WebApp.Models
 {
@@ -17,6 +16,7 @@ namespace WebApp.Models
         public Operation Add(Operation operation)
         {
             _context.Operations.Add(operation);
+            operation.Date = DateTime.Now;
             _context.SaveChanges();
             return operation;
         }
@@ -44,6 +44,7 @@ namespace WebApp.Models
 
         public Operation Update(Operation operation)
         {
+            operation.Date = DateTime.Now;
             var curr = _context.Operations.Attach(operation);
             curr.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             _context.SaveChanges();

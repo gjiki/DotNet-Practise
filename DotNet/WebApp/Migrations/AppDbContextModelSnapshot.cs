@@ -19,7 +19,7 @@ namespace WebApp.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("WebApp.Models.Currency", b =>
+            modelBuilder.Entity("WebApp.Models.Course", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -42,7 +42,38 @@ namespace WebApp.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Currensies");
+                    b.ToTable("Courses");
+                });
+
+            modelBuilder.Entity("WebApp.Models.Currency", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CurrencyCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(3)")
+                        .HasMaxLength(3);
+
+                    b.Property<string>("CurrencyLatinName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CurrencyName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("OrderNum")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Currencies");
                 });
 
             modelBuilder.Entity("WebApp.Models.Operation", b =>
@@ -55,13 +86,13 @@ namespace WebApp.Migrations
                     b.Property<decimal>("BuyAmount")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("FromCurrency")
                         .IsRequired()
                         .HasColumnType("nvarchar(3)")
                         .HasMaxLength(3);
-
-                    b.Property<decimal>("Rate")
-                        .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("SellAmount")
                         .HasColumnType("decimal(18,2)");

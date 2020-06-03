@@ -1,9 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using WebApp.Models;
 
 namespace WebApp.Controllers
@@ -19,8 +16,8 @@ namespace WebApp.Controllers
 
         public IActionResult Index()
         {
-            var model = _currencyRepository.GetAllCurrencies();
-            return View(model);
+            List<Currency> currencies = _currencyRepository.GetAllCurrencies().ToList().OrderBy(x => x.OrderNum).ToList();
+            return View(currencies);
         }
 
         [HttpGet]

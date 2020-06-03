@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace WebApp.Models
 {
     public interface ICurrencyRepository
     {
         Currency GetCurrency(int id);
+        Currency GetCurrencyByCode(string currencyCode);
         IEnumerable<Currency> GetAllCurrencies();
         Currency Add(Currency currency);
         Currency Update(Currency currency);
         Currency Delete(int id);
-        decimal GetBuyRateByCurrencies(string currName);
-        decimal GetSellRateByCurrencies(string currName);
-        List<string> GetUniqueCurrencies();
+        int GetOrderNum(int id);
+        int GetOrderNumByCode(string currencyCode);
+
     }
 }

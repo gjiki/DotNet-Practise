@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using WebApp.Models;
@@ -11,11 +8,13 @@ namespace WebApp.Controllers
     public class CalculatorController : Controller
     {
         private IOperationRepository _operationRepository;
+        private ICourseRepository _courseRepository;
         private ICurrencyRepository _currencyRepository;
 
-        public CalculatorController(IOperationRepository operationRepository, ICurrencyRepository currencyRepository)
+        public CalculatorController(IOperationRepository operationRepository, ICourseRepository courseRepository, ICurrencyRepository currencyRepository)
         {
             _operationRepository = operationRepository;
+            _courseRepository = courseRepository;
             _currencyRepository = currencyRepository;
         }
 
@@ -29,12 +28,11 @@ namespace WebApp.Controllers
         public IActionResult Add()
         {
             List<string> lst = new List<string>();
-            lst.Add(null);
-            foreach (var item in _currencyRepository.GetUniqueCurrencies())
+            foreach (var item in _courseRepository.GetUniqueCurrencies())
             {
                 lst.Add(item);
             }
-            ViewBag.UniqueCurrencies = new SelectList(lst);
+            ViewBag.UniqueCurrenciesFromCalculator = new SelectList(lst);
 
             Operation operation = new Operation();
             return View(operation);
@@ -48,13 +46,16 @@ namespace WebApp.Controllers
                 _operationRepository.Add(operation);
                 return RedirectToAction("Index", "Calculator");
             }
-            return View();
+            return View(operation);
         }
 
         [HttpPost]
-        public JsonResult Rate(Operation data)
+        public JsonResult Rate(string fromCurrency, string toCurrency)
         {
-            var result = new Random().Next(2, 4);
+            decimal buyFirst = _courseRepository.GetBuyRateByCurrencyName(fromCurrency);
+            decimal sellSecond = _courseRepository.GetSellRateByCurrencyName(toCurrency);
+
+            var result = buyFirst / sellSecond;
             return Json(result);
         }
     }

@@ -1,33 +1,51 @@
 ﻿@model IEnumerable<WebApp.Models.Currency>
 
 @{
-    ViewData["Title"] = "Currencies";
+    ViewData["Title"] = "Index";
 }
 
-<table class="table table-bordered table-responsive table-hover">
-    <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Buy</th>
-        <th>Sell</th>
-        <th>Date</th>
-        <th>Actions</th>
-    </tr>
-    @foreach (var item in Model)
-    {
+<p>
+    <a class="nav-link text-dark" asp-area="" asp-controller="Currency" asp-action="Add">Add Currency</a>
+</p>
+
+<table class="table">
+    <thead>
         <tr>
-            <td>@item.ID</td>
-            <td>@item.CurrencyName</td>
-            <td>@item.Buy</td>
-            <td>@item.Sell</td>
-            <td>@item.Date</td>
+            <th>
+                @Html.DisplayNameFor(model => model.CurrencyCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CurrencyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CurrencyLatinName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
             <td>
-                @Html.ActionLink("Edit", "Edit", "Currency", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", "Currency", new { id = item.ID })
+                @Html.DisplayFor(modelItem => item.CurrencyCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrencyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrencyLatinName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
             </td>
         </tr>
-    }
+}
+    </tbody>
 </table>
-
-<hr />
-<a class="nav-link text-dark" asp-area="" asp-controller="Currency" asp-action="Add">Add Currency</a>

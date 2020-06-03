@@ -1,10 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,6 +22,7 @@ namespace WebApp
         {
             services.AddDbContextPool<AppDbContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("AppDbConnection")));
+            services.AddScoped<ICourseRepository, SqlCourseRepository>();
             services.AddScoped<ICurrencyRepository, SqlCurrencyRepository>();
             services.AddScoped<IOperationRepository, SqlOperationRepository>();
             services.AddControllersWithViews();

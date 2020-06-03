@@ -4,27 +4,50 @@
     ViewData["Title"] = "Operations";
 }
 
-<table class="table table-bordered table-responsive table-hover">
-    <tr>
-        <th>Id</th>
-        <th>From</th>
-        <th>To</th>
-        <th>Rate</th>
-        <th>BuyAmount</th>
-        <th>SellAmount</th>
-    </tr>
-    @foreach (var item in Model)
-    {
-    <tr>
-        <td>@item.ID</td>
-        <td>@item.FromCurrency</td>
-        <td>@item.ToCurrency</td>
-        <td>@item.Rate</td>
-        <td>@item.BuyAmount</td>
-        <td>@item.SellAmount</td>
-    </tr>
-    }
-</table>
+    <p>
+        <a class="nav-link text-dark" asp-area="" asp-controller="Calculator" asp-action="Add">Add Operation</a>
+    </p>
 
-<hr />
-<a class="nav-link text-dark" asp-area="" asp-controller="Calculator" asp-action="Add">Add Operation</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FromCurrency)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ToCurrency)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BuyAmount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SellAmount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FromCurrency)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ToCurrency)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BuyAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SellAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
