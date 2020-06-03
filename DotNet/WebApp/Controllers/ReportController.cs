@@ -40,7 +40,7 @@ namespace WebApp.Controllers
         [HttpGet]
         public IActionResult Suspicios()
         {
-            return View(_operationRepository.GetAllOperations().OrderBy(x => x.SellAmount * _courseRepository.GetBuyRateByCurrencyName(x.FromCurrency)).Take(5));
+            return View(_operationRepository.GetAllOperations().OrderByDescending(x => x.SellAmount * _courseRepository.GetBuyRateByCurrencyName(x.FromCurrency)).Take(5));
         }
     }
 }

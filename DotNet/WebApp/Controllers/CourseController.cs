@@ -42,8 +42,24 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                _courseRepository.Add(course);
-                return RedirectToAction("Index", "Course");
+                Course currCourse = _courseRepository.GetCourseByCurrencyName(course.CurrencyName);
+                if (currCourse == null)
+                {
+                    _courseRepository.Add(course);
+                    return RedirectToAction("Index", "Course");
+                } else
+                {
+                    ViewData["CourseAlrert"] = "Course already exists";
+                    List<string> lst = new List<string>();
+                    foreach (var item in _currencyRepository.GetAllCurrencies().ToList().OrderBy(x => x.OrderNum).ToList())
+                    {
+                        lst.Add(item.CurrencyCode);
+                    }
+                    ViewBag.UniqueCurrenciesFromCourse = new SelectList(lst);
+
+                    Course newCourse = new Course();
+                    return View(newCourse);
+                }
             }
             return View();
         }

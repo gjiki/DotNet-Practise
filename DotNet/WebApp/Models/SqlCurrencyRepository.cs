@@ -22,11 +22,6 @@ namespace WebApp.Models
                 _context.Currencies.Add(currency);
                 _context.SaveChanges();
             }
-            else
-            {
-                currency.Date = DateTime.Now;
-                this.Update(currency);
-            }
             return currency;
         }
 

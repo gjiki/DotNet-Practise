@@ -4,8 +4,9 @@
     ViewData["Title"] = "Add Currency";
 }
 
-<form asp-controller="Currency" asp-acion="Add" method="post" class="mt-3">
-    @{
-        @await Html.PartialAsync("CurrencyData");
-    }
-</form>
+    <form asp-controller="Currency" asp-acion="Add" method="post" class="mt-3">
+        @ViewData["CurrencyAddAlert"]
+        @{
+            @await Html.PartialAsync("CurrencyData");
+        }
+    </form>

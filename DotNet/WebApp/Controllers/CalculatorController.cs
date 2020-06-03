@@ -58,5 +58,11 @@ namespace WebApp.Controllers
             var result = buyFirst / sellSecond;
             return Json(result);
         }
+
+        [HttpPost]
+        public JsonResult GetRate(string fromCurrency)
+        {
+            return Json(_courseRepository.GetBuyRateByCurrencyName(fromCurrency));
+        }
     }
 }

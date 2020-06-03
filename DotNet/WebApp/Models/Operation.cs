@@ -25,6 +25,9 @@ namespace WebApp.Models
         [Required]
         public decimal SellAmount { get; set; }
 
+        [DataType(DataType.Text)]
+        public string Comment { get; set; }
+
         [Required]
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }

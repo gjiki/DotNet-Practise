@@ -32,8 +32,17 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                _currencyRepository.Add(currency);
-                return RedirectToAction("Index", "Currency");
+                Currency curr = _currencyRepository.GetCurrencyByCode(currency.CurrencyCode);
+                if (curr == null)
+                {
+                    _currencyRepository.Add(currency);
+                    return RedirectToAction("Index", "Currency");
+                } else
+                {
+                    ViewData["CurrencyAddAlert"] = "Such currency already exists";
+                    Currency newCurr = new Currency();
+                    return View(newCurr);
+                }
             }
             return View();
         }
