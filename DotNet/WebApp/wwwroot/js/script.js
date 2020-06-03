@@ -62,7 +62,7 @@
                     if (rate != '0.00' && rate != null && rate != NaN) {
                         if (parseFloat($("#sellAmountInput").val()) * data >= 3000 && $("#commentInput").val() == "") {
                             document.getElementById("submitOperation").disabled = true;
-                        } else {
+                        } else if (parseFloat($("#sellAmountInput").val()) != 0) {
                             document.getElementById("submitOperation").disabled = false;
                         }
                     }
@@ -94,7 +94,7 @@
                     if (rate != '0.00' && rate != null && rate != NaN) {
                         if (parseFloat($("#sellAmountInput").val()) * data >= 3000 && $("#commentInput").val() == "") {
                             document.getElementById("submitOperation").disabled = true;
-                        } else {
+                        } else if (parseFloat($("#buyAmountInput").val()) != 0){
                             document.getElementById("submitOperation").disabled = false;
                         }
                     }
